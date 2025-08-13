@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="resources/styles.css">
+    <style>
+        .mini-buttons {
+            display: none;
+        }
+        @media (max-width: 601px) {
+            .jack h1 {
+                color: rgb(114, 81, 50);
+            }
+            .mini-buttons {
+                display: block;
+                img {
+                    height: 35px;
+                    width: 35px;
+                    position: absolute;
+                    top: 30px;
+                    right: 10px;
+                }
+            }
+        } 
+        #popup {
+            opacity: 0;
+            visibility: hidden;
+        }
+        #popup:target {
+            opacity: 1;
+            transition: 3s;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="jack">
+            <h1>Coffee co.</h1>
+        </div>
+        <div class="buttons">
+            <a href="#" style="color: rgb(197, 142, 39);">Home</a>
+            <a href="">Menu</a>
+            <a href="">Login</a>
+            <a href="">About</a>
+        </div>
+        <div class="mini-buttons">
+            <a href="#popup"><img src="resources/images/icons/burger-bar.png" alt=""></a>
+        </div>
+    </nav>
+    <div class="buttons-popup" id="popup">
+        <a href="#" style="color: rgb(177, 65, 0); font-weight: 700; font-size: 23pt;">x</a>
+        <a href="#" style="color: rgb(197, 142, 39)">Home</a>
+        <a href="pages/menu.html">Menu</a>
+        <a href="pages/Login.html">Login</a>
+        <a href="pages/about.html">About</a>
+    </div>
+    <div class="message-parent">
+        <div class="message">
+            <h2>Welcome!</h2>
+            <p>We serve the richest coffee in the city.</p>
+            <a href="#fast-order"><button>Order Now</button></a>
+        </div>
+    </div>
+    <div class="column1">
+        <div class="sample-order">
+            <h2 align="center">Our Specials For Today ; &#41;</h2>
+            <div class="sample-row">
+                <div class="snip">
+                    <div>
+                        <img src="resources/images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="">
+                    </div>
+                    <h3 style="margin-top: -10px;">Lungo Coffee</h3>
+                    <p align="center">Provides a caffeine boost and adds flavor to mellow roast</p>
+                    <h3 style="position: relative; top: -10px;">GHC 10.00</h3>
+                </div>
+                <div class="snip">
+                    <div>
+                        <img src="resources/images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="">
+                    </div>
+                    <h3 style="margin-top: -10px;">Lungo Coffee</h3>
+                    <p align="center">Provides a caffeine boost and adds flavor to mellow roast</p>
+                    <h3 style="position: relative; top: -10px;">GHC 10.00</h3>
+                </div>
+                <div class="snip">
+                    <div>
+                        <img src="resources/images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="">
+                    </div>
+                    <h3 style="margin-top: -10px;">Lungo Coffee</h3>
+                    <p align="center">Provides a caffeine boost and adds flavor to mellow roast</p>
+                    <h3 style="position: relative; top: -10px;">GHC 10.00</h3>
+                </div>
+                <div class="snip">
+                    <div>
+                        <img src="resources/images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="">
+                    </div>
+                    <h3 style="margin-top: -10px;">Lungo Coffee</h3>
+                    <p align="center">Provides a caffeine boost and adds flavor to mellow roast</p>
+                    <h3 style="position: relative; top: -10px;">GHC 10.00</h3>
+                </div>
+                <div class="snip">
+                    <div>
+                        <img src="resources/images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="">
+                    </div>
+                    <h3 style="margin-top: -10px;">Lungo Coffee</h3>
+                    <p align="center">Provides a caffeine boost and adds flavor to mellow roast</p>
+                    <h3 style="position: relative; top: -10px;">GHC 10.00</h3>
+                </div>
+            </div>
+            <div class="sample-row" style="margin-top: 20px;">
+                <div class="snip">
+                    <div>
+                        <img src="resources/images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="">
+                    </div>
+                    <h3 style="margin-top: -10px;">Lungo Coffee</h3>
+                    <p align="center">Provides a caffeine boost and adds flavor to mellow roast</p>
+                    <h3 style="position: relative; top: -10px;">GHC 10.00</h3>
+                </div>
+                <div class="snip">
+                    <div>
+                        <img src="resources/images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="">
+                    </div>
+                    <h3 style="margin-top: -10px;">Lungo Coffee</h3>
+                    <p align="center">Provides a caffeine boost and adds flavor to mellow roast</p>
+                    <h3 style="position: relative; top: -10px;">GHC 10.00</h3>
+                </div>
+                <div class="snip">
+                    <div>
+                        <img src="resources/images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="">
+                    </div>
+                    <h3 style="margin-top: -10px;">Lungo Coffee</h3>
+                    <p align="center">Provides a caffeine boost and adds flavor to mellow roast</p>
+                    <h3 style="position: relative; top: -10px;">GHC 10.00</h3>
+                </div>
+                <div class="snip">
+                    <div>
+                        <img src="resources/images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="">
+                    </div>
+                    <h3 style="margin-top: -10px;">Lungo Coffee</h3>
+                    <p align="center">Provides a caffeine boost and adds flavor to mellow roast</p>
+                    <h3 style="position: relative; top: -10px;">GHC 10.00</h3>
+                </div>
+                <div class="snip">
+                    <div>
+                        <img src="resources/images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="">
+                    </div>
+                    <h3 style="margin-top: -10px;">Lungo Coffee</h3>
+                    <p align="center">Provides a caffeine boost and adds flavor to mellow roast</p>
+                    <h3 style="position: relative; top: -10px;">GHC 10.00</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="info-parent">
+        <div class="info-top">
+            <div class="comments">
+                <div class="comments-top">
+                    <img src="resources/images/churros.jpg" alt="">
+                    <span>Danny Adelle</span>
+                </div>
+                <div class="ratings">
+                    <img style="margin-left: 10px;" src="resources/images/star.png" alt="">
+                    <img src="resources/images/star.png" alt="">
+                    <img src="resources/images/star.png" alt="">
+                    <img src="resources/images/star.png" alt="">
+                    <p style="margin-left: 40%;">12 / 01 / 24</p>
+                </div>
+                <div class="comments-bottom">
+                    <p>This coffee shop is my new favorite spot! The coffee is consistenly delicious and the website is so user friendly.</p>
+                </div>
+            </div>
+            <div class="comments">
+                <div class="comments-top">
+                    <img src="resources/images/churros.jpg" alt="">
+                    <span>Danny Adelle</span>
+                </div>
+                <div class="ratings">
+                    <img style="margin-left: 10px;" src="resources/images/star.png" alt="">
+                    <img src="resources/images/star.png" alt="">
+                    <img src="resources/images/star.png" alt="">
+                    <img src="resources/images/star.png" alt="">
+                    <p style="margin-left: 40%;">12 / 01 / 24</p>
+                </div>
+                <div class="comments-bottom">
+                    <p>This coffee shop is my new favorite spot! The coffee is consistenly delicious and the website is so user friendly.</p>
+                </div>
+            </div>
+            <div class="comments">
+                <div class="comments-top">
+                    <img src="resources/images/churros.jpg" alt="">
+                    <span>Danny Adelle</span>
+                </div>
+                <div class="ratings">
+                    <img style="margin-left: 10px;" src="resources/images/star.png" alt="">
+                    <img src="resources/images/star.png" alt="">
+                    <img src="resources/images/star.png" alt="">
+                    <img src="resources/images/star.png" alt="">
+                    <p style="margin-left: 40%;">12 / 01 / 24</p>
+                </div>
+                <div class="comments-bottom">
+                    <p>This coffee shop is my new favorite spot! The coffee is consistenly delicious and the website is so user friendly.</p>
+                </div>
+            </div>
+            <div class="comments">
+                <div class="comments-top">
+                    <img src="resources/images/churros.jpg" alt="">
+                    <span>Danny Adelle</span>
+                </div>
+                <div class="ratings">
+                    <img style="margin-left: 10px;" src="resources/images/star.png" alt="">
+                    <img src="resources/images/star.png" alt="">
+                    <img src="resources/images/star.png" alt="">
+                    <img src="resources/images/star.png" alt="">
+                    <p style="margin-left: 40%;">12 / 01 / 24</p>
+                </div>
+                <div class="comments-bottom">
+                    <p>This coffee shop is my new favorite spot! The coffee is consistenly delicious and the website is so user friendly.</p>
+                </div>
+            </div>
+        </div>
+        <div class="info-bottom">
+            <span>Coffee co.</span>
+            <div class="privacy">
+                <h2>PRIVACY</h2>
+                <a href="pages/terms.html">Terms of use</a>
+                <a href="pages/policy.html">Privacy policy</a>
+                <a href="#">Info</a>
+            </div>
+            <div class="privacy" style="position: relative; left: 50%; top: -200px;">
+                <h2>SERVICES</h2>
+                <a href="pages/menu.html">Shop</a>
+                <a href="pages/menu.html">Order</a>
+                <a href="pages/menu.html">Menu</a>
+            </div>
+            <div class="privacy" style="position: relative; left: 75%; top: -250px;">
+                <h2>ABOUT US</h2>
+                <a href="https://www.google.com/maps/place/GCTU+Tesano+Campus/@5.5964249,-0.222993,449m/data=!3m1!1e3!4m6!3m5!1s0xfdf9a29c79e71eb:0x39e24c336da5d01a!8m2!3d5.5965744!4d-0.2228428!16s%2Fg%2F1hf05zv88?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI0MTIwOS4wIKXMDSoASAFQAw%3D%3D">Our location</a>
+                <a href="pages/about.html">About us</a>
+                <a href="#">Our story</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
