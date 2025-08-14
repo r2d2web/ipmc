@@ -369,3 +369,22 @@ nav {
         }
     }
 }
+#popup {
+            opacity: 0;
+            visibility: hidden;
+        }
+        #popup:target {
+            opacity: 1;
+            transition: 3s;
+            visibility: visible;
+        }
+/* menu styles */
+body.nobg {
+    background-image: none;
+    .jack h1 {
+        color: black;
+    }
+    .buttons a {
+        color: rgb(137, 137, 137);
+    }
+}
