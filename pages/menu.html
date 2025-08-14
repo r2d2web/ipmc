@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style - Copy.css">
+    <style>
+        #popup {
+            opacity: 0;
+            visibility: hidden;
+        }
+        #popup:target {
+            opacity: 1;
+            transition: 3s;
+            visibility: visible;
+        }
+        body {
+            background-color: white;
+            background-image: none;
+        }
+        nav {
+            /* background-color: red; */
+            .jack h1 {
+                color: rgb(114, 81, 50);
+            }
+            .buttons a {
+                color: black;
+            }
+        }
+        .sample-row {
+            margin-top: 20px;
+        }
+        @media (max-width: 837px) {
+            .snip {
+                margin-left: 5px;
+                margin-right: 10px;
+            }
+            .sample-row {
+                overflow-x: scroll;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="jack">
+            <h1>Coffee co.</h1>
+        </div>
+        <div class="buttons">
+            <a href="../i.html">Home</a>
+            <a href="#" style="color: rgb(197, 142, 39);">Menu</a>
+            <a href="Login.html">Login</a>
+            <a href="about.html">About</a>
+        </div>
+        <div class="mini-buttons">
+            <a href="#popup"><img src="../images/icons/bars-solid.svg" alt=""></a>
+        </div>
+    </nav>
+    <div class="buttons-popup" id="popup">
+        <a href="#" style="color: rgb(177, 65, 0); font-weight: 700; font-size: 23pt;">x</a>
+        <a href="../i.html">Home</a>
+        <a href="#" style="color: rgb(197, 142, 39)">Menu</a>
+        <a href="Login.html">Login</a>
+        <a href="about.html">About</a>
+    </div>
+    <div class="place-o"></div>
+    <div class="menu-container">
+        <div class="menu-parent">
+            <div class="image">
+                <img src="../images/dalgona.jpg" alt="" style="border-top-right-radius: 30px; border-bottom-right-radius: 30px;">
+            </div>
+            <div class="menu-text">
+                <table>
+                    <tr>
+                        <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                        <td><h4>GH₡ 10.00</h4></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Espresso</h4><p>A strong, concentrated coffee made by forcing hot water through finely-ground coffee beans</p></td>
+                        <td><h4>GH₡ 9.00</h4></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Americano</h4><p> A diluted version of espresso, made by adding hot water to a shot of espresso</p></td>
+                        <td><h4>GH₡ 22.00</h4></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="menu-parent">
+            <div class="menu-text">
+                <table>
+                    <tr>
+                        <td><h4>Cappuccino</h4><p>A made with one shot of espresso</p></td>
+                        <td><h4>GH₡ 5.00</h4></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Mocha</h4><p>A sweetened combination of espresso, steamed milk, and chocolate with whipped cream.</p></td>
+                        <td><h4>GH₡ 32.00</h4></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Macchiato</h4><p>An espresso "stained" with a small amount of steamed milk or foam</p></td>
+                        <td><h4>GH₡ 10.00</h4></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="image" style="display: flex; justify-content: flex-end;">
+                <img src="../images/filter.jpg" alt="" style="border-top-left-radius: 30px; border-bottom-left-radius: 30px;">
+            </div>
+        </div>
+    </div>
+    <div class="menu-container" id="ads">
+        <div class="menu-parent">
+            <div class="menu-text">
+                <table>
+                    <tr>
+                        <td><h4>Flat White</h4><p>this coffee has a velvety texture made with steamed milk and espresso.</p></td>
+                        <td><h4>GH₡ 10.00</h4></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Cortado</h4><p>Equal parts espresso and steamed milk, offering a smooth, balanced flavor.</p></td>
+                        <td><h4>GH₡ 10.00</h4></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Affogato</h4><p>A coffee made by pouring a shot of hot espresso over a scoop of vanilla ice cream</p></td>
+                        <td><h4>GH₡ 10.00</h4></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="image">
+                <img src="../images/americano.jpg" alt="" style="border-top-left-radius: 30px; border-bottom-left-radius: 30px;">
+            </div>
+        </div>
+        <div class="menu-parent">
+            <div class="image" style="display: flex; justify-content: flex-end;">
+                <img src="../images/photo_2024-12-09_13-09-09.jpg" alt="" style="border-top-right-radius: 30px; border-bottom-right-radius: 30px;">
+            </div>
+            <div class="menu-text">
+                <table>
+                    <tr>
+                        <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                        <td><h4>GH₡ 10.00</h4></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                        <td><h4>GH₡ 10.00</h4></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                        <td><h4>GH₡ 10.00</h4></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="menu-container" id="ads">
+        <div class="menu-parent">
+            <div class="image">
+                <img src="../images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="" style="border-top-right-radius: 30px; border-bottom-right-radius: 30px;">
+            </div>
+            <div class="menu-text">
+                <table>
+                    <tr>
+                        <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                        <td><h4>GH₡ 10.00</h4></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                        <td><h4>GH₡ 10.00</h4></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                        <td><h4>GH₡ 10.00</h4></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="menu-parent">
+            <div class="menu-text">
+                <table>
+                    <tr>
+                        <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                        <td><h4>Lungo Coffee</h4></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                        <td><h4>Lungo Coffee</h4></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                        <td><h4>Lungo Coffee</h4></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="image" style="display: flex; justify-content: flex-end;">
+                <img src="../images/filter.jpg" alt="" style="border-top-left-radius: 30px; border-bottom-left-radius: 30px;">
+            </div>
+        </div>
+    </div>
+    <div class="menu-container2">
+        <img src="../images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="" style="border-top-right-radius: 30px; border-bottom-right-radius: 30px;">
+        <table>
+            <tr>
+                <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Espresso</h4><p>A strong, concentrated coffee made by forcing hot water through finely-ground coffee beans</p></td>
+                <td><h4>GH₡ 9.00</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Americano</h4><p>A diluted version of espresso, made by adding hot water to a shot of espresso</p></td>
+                <td><h4>GH₡ 22.00</h4></td>
+            </tr>
+        </table>
+        <img src="../images/filter.jpg" alt="" style="border-top-left-radius: 30px; border-bottom-left-radius: 30px;">
+    </div>
+    <div class="menu-container2" id="ads">
+        <table>
+            <tr>
+                <td><h4>Cappuccino</h4><p>A coffee made with one shot of espresso</p></td>
+                <td><h4>GH₡ 5.00</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Mocha</h4><p>A sweetened combination of espresso, steamed milk, and chocolate with whipped cream</p></td>
+                <td><h4>GH₡ 32.00</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Macchiato</h4><p>An espresso "stained" with a small amount of steamed milk or foam</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+        </table>
+        <img src="../images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="" style="border-radius: 30px;">
+        <table>
+            <tr>
+                <td><h4>Flat White</h4><p>this coffee has a velvety texture made with steamed milk and espresso.</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Cortado</h4><p>Equal parts espresso and steamed milk, offering a smooth, balanced flavor.</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Affogato</h4><p>A coffee made by pouring a shot of hot espresso over a scoop of vanilla ice cream</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+        </table>
+    </div>
+    <div class="menu-container2" id="ads">
+        <img src="../images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="" style="border-top-right-radius: 30px; border-bottom-right-radius: 30px;">
+        <table>
+            <tr>
+                <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+        </table>
+        <img src="../images/filter.jpg" alt="" style="border-top-left-radius: 30px; border-bottom-left-radius: 30px;">
+    </div>
+    <div class="menu-container2" id="ads">
+        <table>
+            <tr>
+                <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+        </table>
+        <img src="../images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="" style="border-radius: 30px;">
+        <table>
+            <tr>
+                <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                <td><h4>GH₡ 10.00</h4></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="box">
+        <div class="menu-container3">
+            <img src="../images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="" style="border-radius: 30px;">
+            <table>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+            </table>
+        </div>
+        <div class="menu-container3">
+            <table>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+            </table>
+            <img src="../images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="" style="border-radius: 30px;">
+        </div>
+        <div class="menu-container3">
+            <img src="../images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="" style="border-radius: 30px;">
+            <table>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+            </table>
+        </div>
+        <div class="menu-container3">
+            <table>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+            </table>
+            <img src="../images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="" style="border-radius: 30px;">
+        </div>
+        <div class="menu-container3">
+            <img src="../images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="" style="border-radius: 30px;">
+            <table>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+            </table>
+        </div>
+        <div class="menu-container3">
+            <table>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
+                    <td><h4>GH₡ 10.00</h4></td>
+                </tr>
+            </table>
+            <img src="../images/front-view-coffee-latte-with-coffee-beans_141793-4603.jpg" alt="" style="border-radius: 30px;">
+        </div>
+    </div>
+</body>
+</html>
