@@ -24,14 +24,16 @@
                 }
             }
         } 
-        #popup {
+        .buttons-popup {
             opacity: 0;
             visibility: hidden;
+            transition: opacity 0.5s ease;
+            z-index: 1;
         }
-        #popup:target {
-            opacity: 1;
-            transition: 3s;
-            visibility: visible;
+        /* Apply the blur filter to the main message div when the popup is active */
+        #popup:target + .message-parent .message {
+            filter: blur(5px);
+            transition: filter 0.5s ease;
         }
     </style>
 </head>
@@ -42,9 +44,9 @@
         </div>
         <div class="buttons">
             <a href="#" style="color: rgb(197, 142, 39);">Home</a>
-            <a href="">Menu</a>
-            <a href="">Login</a>
-            <a href="">About</a>
+            <a href="pages/menu.html">Menu</a>
+            <a href="pages/login.html">Login</a>
+            <a href="pages/about.html">About</a>
         </div>
         <div class="mini-buttons">
             <a href="#popup"><img src="resources/images/icons/burger-bar.png" alt=""></a>
