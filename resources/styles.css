@@ -6,7 +6,8 @@ body {
     margin: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-image: url(images/man-holds-cup-latte-with-leaf-it_1086760-299183.jpg);
-    background-size: 100% auto;
+    background-size: cover;
+    background-attachment: fixed;
     background-repeat: no-repeat;
 }
 nav {
@@ -598,7 +599,27 @@ body.nobg {
     a {
         text-align: center;
         text-decoration: none;
-        color: #6d4c41;
+        color: rgb(197, 142, 39);
         margin-top: -5px;
     }
+}
+body.log {
+    background-size: cover;
+    background-attachment: fixed;
+}
+#signup {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
+#signup:target {
+    z-index: 100;
+    opacity: 1;
+    visibility: visible;
+}
+#login {
+    transition: 0.5s;
+}
+#login:target {
+    z-index: 101;
 }
