@@ -28,9 +28,9 @@
         <a href="#" style="color: rgb(197, 142, 39)">Login</a>
         <a href="about.html">About</a>
     </div>
-    <div class="login">
+    <div class="login" id="login">
         <h1>Login</h1> <hr>
-        <input type="email" placeholder="email">
+        <input type="tel" placeholder="contact eg: +233 12345...">
         <input type="password" placeholder="password">
         <div>
             <div>
@@ -43,7 +43,26 @@
         </div>
         <button type="submit">Login</button>
         <p>Don't have an account?</p>
-        <a href="">Sign Up</a>
+        <a href="#signup">Sign Up</a>
+    </div>
+    <div class="login" id="signup">
+        <h1>Sign Up</h1> <hr>
+        <input type="text" placeholder="first name">
+        <input type="text" placeholder="last name">
+        <input type="tel" placeholder="contact eg: +233 12345...">
+        <input type="password" placeholder="password">
+        <!-- <div>
+            <div>
+                <input type="checkbox">
+                <h6>Remember me</h6>
+            </div>
+            <div>
+                <a href="">Forgot Password?</a>
+            </div>
+        </div> -->
+        <button type="submit">Sign Up</button>
+        <p>Already have an account?</p>
+        <a href="#login">Log in</a>
     </div>
 </body>
 </html>
