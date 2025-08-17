@@ -378,7 +378,7 @@ nav {
         }
         #popup:target {
             opacity: 1;
-            transition: 3s;
+            transition: 0.5s;
             visibility: visible;
         }
 /* menu styles */
