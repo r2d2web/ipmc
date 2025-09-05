@@ -6,7 +6,65 @@
   <title>Order Form</title>
   <link rel="stylesheet" href="../resources/styles.css">
   <style>
-    
+    .receipt {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(100, 100, 100, 0.235);
+            border-radius: 8px;
+            border-top: 3px solid #6f4e37;
+        }
+        
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #6f4e37;
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 10px;
+        }
+        
+        .receipt-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .receipt-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px dashed #ccc;
+        }
+        
+        .item-name {
+            flex: 2;
+        }
+        
+        .item-qty, .item-price, .item-subtotal {
+            flex: 1;
+            text-align: right;
+        }
+        
+        .receipt-title {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .thank-you {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: #6f4e37;
+        }
   </style>
 </head>
 <body>
@@ -18,7 +76,7 @@
             <a href="../index.html">Home</a>
             <a href="menu.html">Menu</a>
             <a href="login.html">Login</a>
-            <a href="about.html" style="color: rgb(197, 142, 39);">About</a>
+            <a href="about.html">About</a>
         </div>
         <div class="mini-buttons">
             <a href="#popup"><img src="../resources/images/icons/burger-bar.png" alt=""></a>
@@ -28,52 +86,271 @@
         <a href="#" style="color: rgb(177, 65, 0); font-weight: 700; font-size: 23pt;">x</a>
         <a href="../index.html">Home</a>
         <a href="menu.html">Menu</a>
-        <a href="#" style="color: rgb(197, 142, 39)">Login</a>
+        <a href="login.html">Login</a>
         <a href="about.html">About</a>
     </div>
-  <div class="order-form">
-    <h1>Coffee co.</h1>
-    
-    <label for="phone">Enter phone number</label>
-    <input type="tel" id="phone" name="phone" placeholder="123-456-7890" />
+    <div class="order-form">
+        <h1>Order</h1>
+        
+        <label for="phone">Enter phone number</label>
+        <input type="tel" id="phone" name="phone" placeholder="123-456-7890" />
 
-    <div class="form-row">
-      <div class="form-group">
-        <label for="coffee">Coffee type</label>
-        <select id="coffee" name="coffee">
-          <option value="" disabled selected>Select coffee</option>
-          <option value="espresso">Espresso</option>
-          <option value="latte">Latte</option>
-          <option value="cappuccino">Cappuccino</option>
-          <option value="americano">Americano</option>
-          <option value="mocha">Mocha</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="dessert">Dessert</label>
-        <select id="dessert" name="dessert">
-          <option value="" disabled selected>Select dessert</option>
-          <option value="tiramisu">Tiramisu</option>
-          <option value="cheesecake">Cheesecake</option>
-          <option value="brownie">Brownie</option>
-          <option value="muffin">Muffin</option>
-          <option value="croissant">Croissant</option>
-        </select>
-      </div>
-    </div>
- 
-    <div class="form-row">
-      <div class="form-group">
-        <label for="coffeeQty">Quantity</label>
-        <input type="number" id="coffeeQty" name="coffeeQty" min="0"/>
-      </div>
-      <div class="form-group">
-        <label for="dessertQty">Quantity</label>
-        <input type="number" id="dessertQty" name="dessertQty" min="0"/>
-      </div>
-    </div>
+        <div id="items-container">
+            <!-- Initial item row -->
+            <div class="item-group">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Coffee type</label>
+                        <select class="coffee" name="coffee">
+                            <option value="" disabled selected>Select coffee</option>
+                            <option value="espresso">Espresso</option>
+                            <option value="latte">Latte</option>
+                            <option value="cappuccino">Cappuccino</option>
+                            <option value="americano">Americano</option>
+                            <option value="mocha">Mocha</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Dessert</label>
+                        <select class="dessert" name="dessert">
+                            <option value="" disabled selected>Select dessert</option>
+                            <option value="tiramisu">Tiramisu</option>
+                            <option value="cheesecake">Cheesecake</option>
+                            <option value="brownie">Brownie</option>
+                            <option value="muffin">Muffin</option>
+                            <option value="croissant">Croissant</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Coffee Quantity</label>
+                        <input type="number" class="coffeeQty" name="coffeeQty" min="0" value="0"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Dessert Quantity</label>
+                        <input type="number" class="dessertQty" name="dessertQty" min="0" value="0"/>
+                    </div>
+                </div>
+                
+                <button type="button" class="remove-btn">Remove Item</button>
+            </div>
+        </div>
 
-    <button type="submit">Place Order</button>
-  </div>
+        <button type="button" id="add-item-btn" class="add-item-btn">Add Another Item</button>
+        
+        <button type="button" id="submit-btn">Place Order</button>
+        
+        <!-- Receipt Section -->
+        <div id="receipt" class="receipt">
+            <div class="receipt-header">
+                <h2>Coffee co. Receipt</h2>
+                <p>Thank you for your order!</p>
+            </div>
+            
+            <div class="receipt-title">
+                <span class="item-name">Item</span>
+                <span class="item-qty">Qty</span>
+                <span class="item-price">Price</span>
+                <span class="item-subtotal">Subtotal</span>
+            </div>
+            
+            <div id="receipt-items">
+                <!-- Receipt items will be inserted here -->
+            </div>
+            
+            <div class="receipt-total">
+                <span>Total:</span>
+                <span id="total-amount">GHC 0.00</span>
+            </div>
+            
+            <div class="thank-you">
+                <p>Your order will be ready in 15-20 minutes</p>
+                <p>We'll call you at <span id="receipt-phone"></span> when it's ready</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Define prices for each item
+        const prices = {
+            espresso: 12.50,
+            latte: 15.00,
+            cappuccino: 14.00,
+            americano: 11.00,
+            mocha: 16.50,
+            tiramisu: 20.00,
+            cheesecake: 22.00,
+            brownie: 18.00,
+            muffin: 12.00,
+            croissant: 10.00
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const itemsContainer = document.getElementById('items-container');
+            const addItemBtn = document.getElementById('add-item-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const receipt = document.getElementById('receipt');
+            const receiptItems = document.getElementById('receipt-items');
+            const totalAmount = document.getElementById('total-amount');
+            const receiptPhone = document.getElementById('receipt-phone');
+            
+            // Function to add a new item group
+            addItemBtn.addEventListener('click', function() {
+                const newItemGroup = document.createElement('div');
+                newItemGroup.className = 'item-group';
+                
+                newItemGroup.innerHTML = `
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Coffee type</label>
+                            <select class="coffee" name="coffee">
+                                <option value="" disabled selected>Select coffee</option>
+                                <option value="espresso">Espresso</option>
+                                <option value="latte">Latte</option>
+                                <option value="cappuccino">Cappuccino</option>
+                                <option value="americano">Americano</option>
+                                <option value="mocha">Mocha</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Dessert</label>
+                            <select class="dessert" name="dessert">
+                                <option value="" disabled selected>Select dessert</option>
+                                <option value="tiramisu">Tiramisu</option>
+                                <option value="cheesecake">Cheesecake</option>
+                                <option value="brownie">Brownie</option>
+                                <option value="muffin">Muffin</option>
+                                <option value="croissant">Croissant</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Coffee Quantity</label>
+                            <input type="number" class="coffeeQty" name="coffeeQty" min="0" value="0"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Dessert Quantity</label>
+                            <input type="number" class="dessertQty" name="dessertQty" min="0" value="0"/>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="remove-btn">Remove Item</button>
+                `;
+                
+                itemsContainer.appendChild(newItemGroup);
+                
+                // Add event listener to the new remove button
+                const removeBtn = newItemGroup.querySelector('.remove-btn');
+                removeBtn.addEventListener('click', function() {
+                    itemsContainer.removeChild(newItemGroup);
+                });
+            });
+            
+            // Add event listeners to initial remove buttons
+            const initialRemoveBtns = document.querySelectorAll('.remove-btn');
+            initialRemoveBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Don't remove if it's the only item
+                    if (document.querySelectorAll('.item-group').length > 1) {
+                        itemsContainer.removeChild(btn.closest('.item-group'));
+                    } else {
+                        alert('You need to have at least one item in your order.');
+                    }
+                });
+            });
+            
+            // Form submission handler
+            submitBtn.addEventListener('click', function() {
+                const phone = document.getElementById('phone').value;
+                if (!phone) {
+                    alert('Please enter your phone number.');
+                    return;
+                }
+                
+                // Collect order items
+                const orderItems = [];
+                const itemGroups = document.querySelectorAll('.item-group');
+                
+                itemGroups.forEach(group => {
+                    const coffeeSelect = group.querySelector('.coffee');
+                    const dessertSelect = group.querySelector('.dessert');
+                    const coffeeQty = group.querySelector('.coffeeQty');
+                    const dessertQty = group.querySelector('.dessertQty');
+                    
+                    const coffee = coffeeSelect.value;
+                    const dessert = dessertSelect.value;
+                    const coffeeQuantity = parseInt(coffeeQty.value) || 0;
+                    const dessertQuantity = parseInt(dessertQty.value) || 0;
+                    
+                    if (coffeeQuantity > 0 && coffee) {
+                        orderItems.push({
+                            type: 'coffee',
+                            name: coffee,
+                            quantity: coffeeQuantity,
+                            price: prices[coffee],
+                            subtotal: coffeeQuantity * prices[coffee]
+                        });
+                    }
+                    
+                    if (dessertQuantity > 0 && dessert) {
+                        orderItems.push({
+                            type: 'dessert',
+                            name: dessert,
+                            quantity: dessertQuantity,
+                            price: prices[dessert],
+                            subtotal: dessertQuantity * prices[dessert]
+                        });
+                    }
+                });
+                
+                if (orderItems.length === 0) {
+                    alert('Please add at least one item to your order.');
+                    return;
+                }
+                
+                // Generate receipt
+                generateReceipt(phone, orderItems);
+            });
+            
+            // Function to generate receipt
+            function generateReceipt(phone, orderItems) {
+                // Clear previous receipt items
+                receiptItems.innerHTML = '';
+                
+                // Display phone number
+                receiptPhone.textContent = phone;
+                
+                // Calculate total and add items to receipt
+                let total = 0;
+                
+                orderItems.forEach(item => {
+                    total += item.subtotal;
+                    
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'receipt-item';
+                    itemElement.innerHTML = `
+                        <span class="item-name">${item.name.charAt(0).toUpperCase() + item.name.slice(1)}</span>
+                        <span class="item-qty">${item.quantity}</span>
+                        <span class="item-price">GHC ${item.price.toFixed(2)}</span>
+                        <span class="item-subtotal">GHC ${item.subtotal.toFixed(2)}</span>
+                    `;
+                    
+                    receiptItems.appendChild(itemElement);
+                });
+                
+                // Update total amount
+                totalAmount.textContent = `GHC ${total.toFixed(2)}`;
+                
+                // Show receipt
+                receipt.style.display = 'block';
+                
+                // Scroll to receipt
+                receipt.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
 </body>
 </html>
