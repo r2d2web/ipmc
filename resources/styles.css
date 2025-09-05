@@ -773,7 +773,7 @@ footer:hover {
       padding: 30px;
       color: white;
       background: #b5966ad0;
-      width: 460px;
+      width: 380px;
       box-sizing: border-box;
       border-radius: 20px;
       position: relative;
@@ -843,3 +843,4 @@ footer:hover {
         }
     }
 }
+
