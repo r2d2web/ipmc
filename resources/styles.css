@@ -771,25 +771,31 @@ footer:hover {
 .order-form {
       border: 2px solid #795548;
       padding: 30px;
+      color: white;
       background: #b5966ad0;
-      width: 300px;
+      width: 460px;
       box-sizing: border-box;
       border-radius: 20px;
-      position: absolute;
-      top: 50%;
+      position: relative;
+      /* top: 50%; */
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%);
       backdrop-filter: blur(7px);
+      box-shadow: inset 1px 1px 10px 8px #9d6e347a;
+    button {
+        margin-top: 10px;
     }
+}
     .order-form h1 {
-      font-size: 1.2rem;
+      font-size: 17pt;
       font-weight: bold;
       margin-bottom: 20px;
+      text-align: center;
     }
     .order-form label {
       display: block;
       margin-bottom: 5px;
-      font-size: 0.9rem;
+      font-size: 16pt;
     }
     .order-form input[type="tel"],
     .order-form input[type="number"],
