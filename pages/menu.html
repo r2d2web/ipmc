@@ -4,25 +4,534 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
-    <link rel="stylesheet" href="../resources/styles.css">
     <style>
+        /* Base styles */
+        html, body {
+            overflow-x: hidden;
+            padding: 0;
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-image: none;
+        }
+        
+        nav {
+            height: 100px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+        
+        nav h1 {
+            font-size: 35pt;
+            position: relative;
+            left: 20px;
+            top: 15px;
+            color: black;
+        }
+        
+        nav .buttons {
+            height: 100px;
+            width: 50%;
+            float: right;
+            text-align: end;
+            position: relative;
+            right: 20px;
+            transform: translate(0, -100%);
+        }
+        
+        nav .buttons a {
+            text-decoration: none;
+            color: rgb(137, 137, 137);
+            font-size: 18pt;
+            transition: 3s;
+            position: relative;
+            top: 35%;
+            margin-left: 20px;
+        }
+        
+        nav .buttons a:hover {
+            color: rgb(197, 142, 39);
+            font-size: 20pt;
+            transition: 0.5s;
+        }
+        
         .mini-buttons {
             display: none;
         }
+        
         @media (max-width: 601px) {
             .jack h1 {
                 color: rgb(114, 81, 50);
             }
+            
             .mini-buttons {
                 display: block;
-                img {
-                    height: 35px;
-                    width: 35px;
-                    position: absolute;
-                    top: 30px;
-                    right: 10px;
-                }
             }
+            
+            .mini-buttons img {
+                height: 35px;
+                width: 35px;
+                position: absolute;
+                top: 30px;
+                right: 10px;
+            }
+            
+            nav .buttons {
+                display: none;
+            }
+        }
+        
+        /* Menu styles */
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 20px;
+            align-items: center;
+            position: relative;
+            top: -85px;
+            justify-self: center;
+            z-index: 1;
+        }
+        
+        .menu-parent {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+            background-color: #f5f5dc;
+            color: #3e2723;
+            border-radius: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+        
+        .menu-parent .image {
+            flex-shrink: 0;
+        }
+        
+        .menu-parent img {
+            width: 250px;
+            height: 100%;
+            object-fit: cover;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+        
+        .menu-text {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        
+        .menu-text table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .menu-text td {
+            padding: 15px;
+            vertical-align: top;
+        }
+        
+        .menu-text td:first-child {
+            width: 70%;
+        }
+        
+        .menu-text h4 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        .menu-text p {
+            margin: 5px 0 0;
+            font-size: 0.9em;
+            color: #6d4c41;
+        }
+        
+        /* Checkbox styling */
+        .menu-item-row {
+            position: relative;
+            padding-right: 40px;
+        }
+        
+        .menu-item-checkbox {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 20px;
+            width: 20px;
+            z-index: 1;
+            cursor: pointer;
+        }
+        
+        /* Purchase modal styling */
+        .purchase-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-modal:hover {
+            color: black;
+        }
+        
+        /* Selected items container */
+        .selected-items-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .selected-item {
+            background-color: #f5f5dc;
+            border-radius: 10px;
+            padding: 15px;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            height: 160px;
+        }
+        
+        .selected-item h4 {
+            margin: 0 0 10px 0;
+            color: #5a3921;
+        }
+        
+        .selected-item .price {
+            font-weight: bold;
+            color: #8B4513;
+            margin-bottom: 10px;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .quantity-btn {
+            background-color: #936433;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        
+        .remove-item-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #888;
+        }
+        
+        .remove-item-btn:hover {
+            color: #ff0000;
+        }
+        
+        /* Receipt styling */
+        .receipt {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(100, 100, 100, 0.235);
+            border-radius: 8px;
+            border-top: 3px solid #6f4e37;
+        }
+        
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #6f4e37;
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 10px;
+        }
+        
+        .receipt-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .receipt-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px dashed #ccc;
+        }
+        
+        .item-name {
+            flex: 2;
+        }
+        
+        .item-qty, .item-price, .item-subtotal {
+            flex: 1;
+            text-align: right;
+        }
+        
+        .receipt-title {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .thank-you {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: #6f4e37;
+        }
+        
+        /* Order form styling */
+        .order-form {
+            border: 2px solid #795548;
+            padding: 30px;
+            color: white;
+            background: #b5966ad0;
+            width: 460px;
+            box-sizing: border-box;
+            border-radius: 20px;
+            margin: 0 auto;
+            backdrop-filter: blur(7px);
+            box-shadow: inset 1px 1px 10px 8px #9d6e347a;
+        }
+        
+        .order-form h1 {
+            font-size: 17pt;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .order-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16pt;
+        }
+        
+        .order-form input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border-radius: 9px;
+            border: none;
+        }
+        
+        .order-form button {
+            width: auto;
+            padding: 10px;
+            background: #936433;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 67px;
+            font-size: 20pt;
+            height: auto;
+        }
+        
+        .order-form button:hover {
+            background: #333;
+        }
+        
+        .no-items-message {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* Buy button */
+        .buy-parent {
+            position: fixed;
+            bottom: 100px;
+            right: 50px;
+            z-index: 100;
+        }
+        
+        .buy {
+            height: 70px;
+            width: 70px;
+            background-color: rgba(240, 207, 90, 0.563);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .buy img {
+            height: 60%;
+            width: 60%;
+        }
+        
+        footer {
+            text-align: center;
+            height: 60px;
+            background-color: rgb(114, 81, 50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+        
+        footer a {
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+        }
+        
+        footer:hover {
+            cursor: pointer;
+            background-color: rgb(163, 116, 72);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .menu-container {
+                top: 0;
+            }
+            
+            .menu-parent {
+                flex-direction: column;
+            }
+            
+            .menu-parent .image,
+            .menu-parent .image img {
+                width: 100%;
+                height: auto;
+                border-radius: 30px 30px 0 0 !important;
+            }
+            
+            .menu-parent .menu-text {
+                padding: 20px 10px;
+            }
+            
+            .menu-parent:nth-of-type(2) .image {
+                order: -1;
+            }
+            
+            .menu-parent:nth-of-type(2) .image img {
+                border-radius: 30px 30px 0 0 !important;
+            }
+            
+            .order-form {
+                width: 90%;
+                padding: 20px;
+            }
+            
+            .selected-item {
+                width: 100%;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+            
+            .buy-parent {
+                bottom: 80px;
+                right: 20px;
+            }
+            
+            .buy {
+                height: 60px;
+                width: 60px;
+            }
+        }
+        
+        /* Popup menu for mobile */
+        .buttons-popup {
+            height: auto;
+            width: 35%;
+            position: fixed;
+            left: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 20px;
+            z-index: 1;
+            border: 2px solid rgba(181, 127, 0, 0.175);
+            transform: translate(-50%);
+            backdrop-filter: blur(45px);
+            box-shadow: inset 0px 0px 23px 5px rgb(218 159 47 / 56%);
+            background-color: rgba(226, 226, 226, 0.856);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s;
+        }
+        
+        .buttons-popup a {
+            text-decoration: none;
+            font-size: 20pt;
+            margin: 10px;
+            color: rgb(46, 46, 46);
+            transition: 4s;
+        }
+        
+        .buttons-popup a:hover {
+            color: rgb(197, 142, 39);
+            transition: 0.5s;
+        }
+        
+        #popup:target {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
@@ -55,17 +564,20 @@
             </div>
             <div class="menu-text">
                 <table>
-                    <tr>
+                    <tr class="menu-item-row">
                         <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
                         <td><h4>GH₡ 10.00</h4></td>
+                        <td><input type="checkbox" class="menu-item-checkbox" data-name="Lungo Coffee" data-price="10.00"></td>
                     </tr>
-                    <tr>
+                    <tr class="menu-item-row">
                         <td><h4>Espresso</h4><p>A strong, concentrated coffee made by forcing hot water through finely-ground coffee beans</p></td>
                         <td><h4>GH₡ 9.00</h4></td>
+                        <td><input type="checkbox" class="menu-item-checkbox" data-name="Espresso" data-price="9.00"></td>
                     </tr>
-                    <tr>
+                    <tr class="menu-item-row">
                         <td><h4>Americano</h4><p> A diluted version of espresso, made by adding hot water to a shot of espresso</p></td>
                         <td><h4>GH₡ 22.00</h4></td>
+                        <td><input type="checkbox" class="menu-item-checkbox" data-name="Americano" data-price="22.00"></td>
                     </tr>
                 </table>
             </div>
@@ -73,17 +585,20 @@
         <div class="menu-parent">
             <div class="menu-text">
                 <table>
-                    <tr>
+                    <tr class="menu-item-row">
                         <td><h4>Cappuccino</h4><p>A made with one shot of espresso</p></td>
                         <td><h4>GH₡ 5.00</h4></td>
+                        <td><input type="checkbox" class="menu-item-checkbox" data-name="Cappuccino" data-price="5.00"></td>
                     </tr>
-                    <tr>
+                    <tr class="menu-item-row">
                         <td><h4>Mocha</h4><p>A sweetened combination of espresso, steamed milk, and chocolate with whipped cream.</p></td>
                         <td><h4>GH₡ 32.00</h4></td>
+                        <td><input type="checkbox" class="menu-item-checkbox" data-name="Mocha" data-price="32.00"></td>
                     </tr>
-                    <tr>
+                    <tr class="menu-item-row">
                         <td><h4>Macchiato</h4><p>An espresso "stained" with a small amount of steamed milk or foam</p></td>
                         <td><h4>GH₡ 10.00</h4></td>
+                        <td><input type="checkbox" class="menu-item-checkbox" data-name="Macchiato" data-price="10.00"></td>
                     </tr>
                 </table>
             </div>
@@ -92,95 +607,57 @@
             </div>
         </div>
     </div>
-    <div class="menu-container">
-        <div class="menu-parent">
-            <div class="image">
-                <img src="../resources/images/dalgona.jpg" alt="" style="border-top-right-radius: 30px; border-bottom-right-radius: 30px;">
-            </div>
-            <div class="menu-text">
-                <table>
-                    <tr>
-                        <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
-                        <td><h4>GH₡ 10.00</h4></td>
-                    </tr>
-                    <tr>
-                        <td><h4>Espresso</h4><p>A strong, concentrated coffee made by forcing hot water through finely-ground coffee beans</p></td>
-                        <td><h4>GH₡ 9.00</h4></td>
-                    </tr>
-                    <tr>
-                        <td><h4>Americano</h4><p> A diluted version of espresso, made by adding hot water to a shot of espresso</p></td>
-                        <td><h4>GH₡ 22.00</h4></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="menu-parent">
-            <div class="menu-text">
-                <table>
-                    <tr>
-                        <td><h4>Cappuccino</h4><p>A made with one shot of espresso</p></td>
-                        <td><h4>GH₡ 5.00</h4></td>
-                    </tr>
-                    <tr>
-                        <td><h4>Mocha</h4><p>A sweetened combination of espresso, steamed milk, and chocolate with whipped cream.</p></td>
-                        <td><h4>GH₡ 32.00</h4></td>
-                    </tr>
-                    <tr>
-                        <td><h4>Macchiato</h4><p>An espresso "stained" with a small amount of steamed milk or foam</p></td>
-                        <td><h4>GH₡ 10.00</h4></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="image" style="display: flex; justify-content: flex-end;">
-                <img src="../resources/images/filter.jpg" alt="" style="border-top-left-radius: 30px; border-bottom-left-radius: 30px;">
-            </div>
-        </div>
-    </div>
-    <div class="menu-container">
-        <div class="menu-parent">
-            <div class="image">
-                <img src="../resources/images/dalgona.jpg" alt="" style="border-top-right-radius: 30px; border-bottom-right-radius: 30px;">
-            </div>
-            <div class="menu-text">
-                <table>
-                    <tr>
-                        <td><h4>Lungo Coffee</h4><p>Provides a caffeine boost and adds flavor to mellow roast</p></td>
-                        <td><h4>GH₡ 10.00</h4></td>
-                    </tr>
-                    <tr>
-                        <td><h4>Espresso</h4><p>A strong, concentrated coffee made by forcing hot water through finely-ground coffee beans</p></td>
-                        <td><h4>GH₡ 9.00</h4></td>
-                    </tr>
-                    <tr>
-                        <td><h4>Americano</h4><p> A diluted version of espresso, made by adding hot water to a shot of espresso</p></td>
-                        <td><h4>GH₡ 22.00</h4></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="menu-parent">
-            <div class="menu-text">
-                <table>
-                    <tr>
-                        <td><h4>Cappuccino</h4><p>A made with one shot of espresso</p></td>
-                        <td><h4>GH₡ 5.00</h4></td>
-                    </tr>
-                    <tr>
-                        <td><h4>Mocha</h4><p>A sweetened combination of espresso, steamed milk, and chocolate with whipped cream.</p></td>
-                        <td><h4>GH₡ 32.00</h4></td>
-                    </tr>
-                    <tr>
-                        <td><h4>Macchiato</h4><p>An espresso "stained" with a small amount of steamed milk or foam</p></td>
-                        <td><h4>GH₡ 10.00</h4></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="image" style="display: flex; justify-content: flex-end;">
-                <img src="../resources/images/filter.jpg" alt="" style="border-top-left-radius: 30px; border-bottom-left-radius: 30px;">
+    
+    <!-- Purchase Modal -->
+    <div id="purchase-modal" class="purchase-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="order-form">
+                <h1>Order</h1>
+                
+                <label for="phone">Enter phone number</label>
+                <input type="tel" id="phone" name="phone" placeholder="123-456-7890" />
+
+                <h3>Selected Items</h3>
+                <div id="selected-items-container" class="selected-items-container">
+                    <div class="no-items-message">No items selected. Please select items from the menu.</div>
+                </div>
+
+                <button type="button" id="submit-btn">Place Order</button>
+                
+                <!-- Receipt Section -->
+                <div id="receipt" class="receipt">
+                    <div class="receipt-header">
+                        <h2>Coffee co. Receipt</h2>
+                        <p>Thank you for your order!</p>
+                    </div>
+                    
+                    <div class="receipt-title">
+                        <span class="item-name">Item</span>
+                        <span class="item-qty">Qty</span>
+                        <span class="item-price">Price</span>
+                        <span class="item-subtotal">Subtotal</span>
+                    </div>
+                    
+                    <div id="receipt-items">
+                        <!-- Receipt items will be inserted here -->
+                    </div>
+                    
+                    <div class="receipt-total">
+                        <span>Total:</span>
+                        <span id="total-amount">GHC 0.00</span>
+                    </div>
+                    
+                    <div class="thank-you">
+                        <p>Your order will be ready in 15-20 minutes</p>
+                        <p>We'll call you at <span id="receipt-phone"></span> when it's ready</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <a href="purchase.html" class="buy-parent">
+    
+    <a href="#" class="buy-parent" id="buy-button">
         <div class="buy">
             <img src="../resources/images/icons/cart.png" alt="">
         </div>
@@ -188,5 +665,193 @@
     <footer id="footer">
         <a href="">Coffee co.</a>
     </footer>
+
+    <script>
+        // Store selected items with quantities
+        let selectedItems = [];
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('purchase-modal');
+            const buyButton = document.getElementById('buy-button');
+            const closeModal = document.querySelector('.close-modal');
+            const selectedItemsContainer = document.getElementById('selected-items-container');
+            const submitBtn = document.getElementById('submit-btn');
+            const receipt = document.getElementById('receipt');
+            const receiptItems = document.getElementById('receipt-items');
+            const totalAmount = document.getElementById('total-amount');
+            const receiptPhone = document.getElementById('receipt-phone');
+            
+            // Add event listeners to all checkboxes
+            document.querySelectorAll('.menu-item-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    
+                    if (this.checked) {
+                        // Add to selected items if not already there
+                        if (!selectedItems.find(item => item.name === name)) {
+                            selectedItems.push({
+                                name: name,
+                                price: price,
+                                quantity: 1
+                            });
+                        }
+                    } else {
+                        // Remove from selected items
+                        selectedItems = selectedItems.filter(item => item.name !== name);
+                    }
+                    
+                    // Update the display if modal is open
+                    if (modal.style.display === 'block') {
+                        updateSelectedItemsDisplay();
+                    }
+                });
+            });
+            
+            // Open modal when buy button is clicked
+            buyButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.style.display = 'block';
+                updateSelectedItemsDisplay();
+            });
+            
+            // Close modal when X is clicked
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal if user clicks outside the modal content
+            window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Function to update the display of selected items
+            function updateSelectedItemsDisplay() {
+                selectedItemsContainer.innerHTML = '';
+                
+                if (selectedItems.length === 0) {
+                    selectedItemsContainer.innerHTML = '<div class="no-items-message">No items selected. Please select items from the menu.</div>';
+                    return;
+                }
+                
+                selectedItems.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'selected-item';
+                    itemElement.innerHTML = `
+                        <button class="remove-item-btn" data-index="${index}">x</button>
+                        <h4>${item.name}</h4>
+                        <div class="price">GHC ${item.price.toFixed(2)}</div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" data-index="${index}">-</button>
+                            <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-index="${index}">
+                            <button class="quantity-btn plus" data-index="${index}">+</button>
+                        </div>
+                    `;
+                    
+                    selectedItemsContainer.appendChild(itemElement);
+                });
+                
+                // Add event listeners to quantity controls
+                document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        if (selectedItems[index].quantity > 1) {
+                            selectedItems[index].quantity--;
+                            updateSelectedItemsDisplay();
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        selectedItems[index].quantity++;
+                        updateSelectedItemsDisplay();
+                    });
+                });
+                
+                document.querySelectorAll('.quantity-input').forEach(input => {
+                    input.addEventListener('change', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        const newQuantity = parseInt(this.value) || 1;
+                        selectedItems[index].quantity = newQuantity > 0 ? newQuantity : 1;
+                        updateSelectedItemsDisplay();
+                    });
+                });
+                
+                document.querySelectorAll('.remove-item-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        // Also uncheck the corresponding checkbox
+                        const itemName = selectedItems[index].name;
+                        document.querySelectorAll('.menu-item-checkbox').forEach(checkbox => {
+                            if (checkbox.getAttribute('data-name') === itemName) {
+                                checkbox.checked = false;
+                            }
+                        });
+                        
+                        selectedItems.splice(index, 1);
+                        updateSelectedItemsDisplay();
+                    });
+                });
+            }
+            
+            // Form submission handler
+            submitBtn.addEventListener('click', function() {
+                const phone = document.getElementById('phone').value;
+                if (!phone) {
+                    alert('Please enter your phone number.');
+                    return;
+                }
+                
+                if (selectedItems.length === 0) {
+                    alert('Please add at least one item to your order.');
+                    return;
+                }
+                
+                // Generate receipt
+                generateReceipt(phone, selectedItems);
+            });
+            
+            // Function to generate receipt
+            function generateReceipt(phone, orderItems) {
+                // Clear previous receipt items
+                receiptItems.innerHTML = '';
+                
+                // Display phone number
+                receiptPhone.textContent = phone;
+                
+                // Calculate total and add items to receipt
+                let total = 0;
+                
+                orderItems.forEach(item => {
+                    const subtotal = item.quantity * item.price;
+                    total += subtotal;
+                    
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'receipt-item';
+                    itemElement.innerHTML = `
+                        <span class="item-name">${item.name}</span>
+                        <span class="item-qty">${item.quantity}</span>
+                        <span class="item-price">GHC ${item.price.toFixed(2)}</span>
+                        <span class="item-subtotal">GHC ${subtotal.toFixed(2)}</span>
+                    `;
+                    
+                    receiptItems.appendChild(itemElement);
+                });
+                
+                // Update total amount
+                totalAmount.textContent = `GHC ${total.toFixed(2)}`;
+                
+                // Show receipt
+                receipt.style.display = 'block';
+                
+                // Scroll to receipt
+                receipt.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
 </body>
 </html>
